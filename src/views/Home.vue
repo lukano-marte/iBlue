@@ -6,15 +6,15 @@
           <img width="650" src="./../assets/deezer.png">
           </div>
 
-          <h2>Busque a sua música</h2>
+          <h3>Busque a sua música</h3>
 
 
               <form @submit.prevent="buscar">
                   <input type="text" placeholder="Ex: Pearl Jam" v-model="busca.nome">
-                  <button class="waves-effect waves-light btn-small btn-busca right" style="bottom: 50px"><i class="material-icons">done</i></button>
+                  <button class="waves-effect waves-light btn-small btn-busca right " style="bottom: 50px"><i class="material-icons">done</i></button>
               </form>
 
-        
+          <div class="container">
             <v-data-table 
                 :items="deezer" 
                 :headers="header" 
@@ -28,7 +28,7 @@
 
                 <template #item.title="{ item }">
                     <a target="_blank" v-bind:href="item.link" style="color: inherit">{{ item.title }}</a>
-                  </template>
+                  </template>;
                   
                 <template #item.duration="{ item }">
                     {{ moment.utc(item.duration*1000).format('mm:ss') }}  
@@ -45,15 +45,14 @@
                </template>
                 
             </v-data-table>
-
-            
-            <ul class="pagination arrow" style="padding-left: 46.19%;">
+          </div>
+        </div>
+   
+            <ul class="pagination paginacao">
               <li class="waves-effect"><a @click="anterior"><i class="material-icons btn-arrow">chevron_left</i></a></li>
           
               <li class="waves-effect"><a @click="proxima"><i class="material-icons btn-arrow">chevron_right</i></a></li>
-            </ul>
-
-        </div>
+            </ul> 
     </div>
 </template>
 
@@ -146,8 +145,9 @@
 </script>
 
 <style>
-h2 {
+h3 {
   text-align: center;
+  color: #343136;
 }
 
 form {
@@ -160,13 +160,14 @@ form {
 }
 
 .btn-play {
-  margin-top: 8px;
+  text-align: center;
+  
 }
 
 .btn-play:hover, .btn-busca:hover {
   background-color: #8518fb;
-    color: #fff;
-    transition: all .35s ease-in-out;
+  color: #fff;
+  transition: all .35s ease-in-out;
 }
 
 .img-logo {
@@ -175,33 +176,44 @@ form {
 }
 
 .img-logo img {
-    display: block;
-    max-width: 100%;
-    margin: 0 auto;
+  display: block;
+  max-width: 100%;
+  margin: 0 auto;
 }
+
+input{
+  font-family: 'Montserrat', sans-serif;
+}
+
+input:focus {
+  border-bottom: 1px solid #8518fb !important;
+  box-shadow: 0 1px 0 0 #8518fb;
+ }
 
 input::placeholder {
   color: silver;
-    font-style: italic;
-    font-size: 1.2em;
-    font-weight: lighter;
-    text-align: center;
+  font-style: italic;
+  font-size: 1.2em;
+  font-weight: lighter;
+  text-align: center;
 }
 
-.arrow {
-  margin-top: 20px;
-}
 
 .btn-arrow {
   background-color: #FB8518;
-    color: #fff;
-}
+  color: #fff;
+  border-radius: 5px;
+  }
 
 .btn-arrow:hover {
-    background-color: #8518fb;
-    color: #fff;
-    transition: all .35s ease-in-out;
+  background-color: #8518fb;
+  color: #fff;
+  transition: all .35s ease-in-out;
 }
 
-
+.paginacao {
+  display: block;
+  margin: 30px auto;
+  text-align: center;
+}
 </style>

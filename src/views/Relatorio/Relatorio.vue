@@ -1,10 +1,7 @@
 <template>
     <div>
         <div class="container">
-            <v-data-table
-            :items="pesquisas"
-            :headers="header"
-            >
+            <v-data-table :items="pesquisas" :headers="header">
             </v-data-table>
         </div>
     </div>
